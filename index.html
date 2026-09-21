@@ -721,6 +721,12 @@
   document.getElementById('flappyRestart').addEventListener('click', flappyInit);
 
   /* ---------- RSVP ---------- */
+  var SHEET_URL = 'https://script.google.com/macros/s/AKfycbzO-mL81smSZNQJt9WputK7yPBubM4SQcml5j2nwmMu5YHQKC9m7ZdzHKpb9t1vmDOp/exec';
+  function sendRsvp(name, coming){
+    try{
+      fetch(SHEET_URL, { method:'POST', body: JSON.stringify({ name:name, coming:coming }) }).catch(function(){});
+    }catch(e){}
+  }
   var rsvpForm = document.getElementById('rsvpForm');
   var rsvpConfirm = document.getElementById('rsvpConfirm');
   function showConfirm(name, coming){
@@ -739,10 +745,14 @@
     try{ localStorage.setItem('arcade_rsvp', JSON.stringify({name:n, coming:coming})); }catch(e){}
   }
   document.getElementById('rsvpYes').addEventListener('click', function(){
-    showConfirm(document.getElementById('guestName').value, true);
+    var name = document.getElementById('guestName').value;
+    showConfirm(name, true);
+    sendRsvp(name && name.trim() ? name.trim() : 'oye', true);
   });
   document.getElementById('rsvpNo').addEventListener('click', function(){
-    showConfirm(document.getElementById('guestName').value, false);
+    var name = document.getElementById('guestName').value;
+    showConfirm(name, false);
+    sendRsvp(name && name.trim() ? name.trim() : 'oye', false);
   });
   document.getElementById('rsvpEdit').addEventListener('click', function(){
     rsvpConfirm.hidden = true;
