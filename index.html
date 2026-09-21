@@ -46,12 +46,6 @@
   h1,h2,h3{font-family:'Bungee', ui-sans-serif, sans-serif; margin:0; text-wrap:balance;}
   .script{font-family:'Caveat', cursive; color:var(--pink); font-weight:700;}
 
-  .doodle{position:fixed; pointer-events:none; opacity:.5; z-index:0; filter:drop-shadow(0 0 6px rgba(0,0,0,.4));}
-  .doodle.tl{top:10px; left:8px; width:64px;}
-  .doodle.tr{top:14px; right:8px; width:58px;}
-  .doodle.bl{bottom:10px; left:6px; width:70px; opacity:.35;}
-  @media (max-width:480px){ .doodle{transform:scale(.7); opacity:.32;} }
-
   #app{position:relative; z-index:1; max-width:480px; margin:0 auto; padding:28px 18px 40px; min-height:100vh; display:flex; flex-direction:column; gap:18px;}
 
   .topline{display:flex; align-items:center; justify-content:center; gap:8px; color:var(--ink-dim); font-size:12px; letter-spacing:.14em; text-transform:uppercase;}
@@ -183,34 +177,13 @@
 </head>
 <body>
 
-<svg class="doodle tl" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M50 88 L18 55 C4 40 8 16 26 12 C36 10 46 16 50 26 C54 16 64 10 74 12 C92 16 96 40 82 55 Z" stroke="#f5eef2" stroke-width="4" stroke-linejoin="round"/>
-  <path d="M30 30 L40 40 M40 30 L30 40" stroke="#ff3d94" stroke-width="3" stroke-linecap="round"/>
-</svg>
-<svg class="doodle tr" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <pattern id="chk" width="14" height="14" patternUnits="userSpaceOnUse">
-      <rect width="14" height="14" fill="#1a0a12"/>
-      <rect width="7" height="7" fill="#ff3d94"/>
-      <rect x="7" y="7" width="7" height="7" fill="#ff3d94"/>
-    </pattern>
-  </defs>
-  <path d="M50 88 L18 55 C4 40 8 16 26 12 C36 10 46 16 50 26 C54 16 64 10 74 12 C92 16 96 40 82 55 Z" fill="url(#chk)"/>
-</svg>
-<svg class="doodle bl" viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg">
-  <path d="M20 70 C10 40 20 15 45 12 C70 9 60 30 68 30 C78 30 82 18 92 22" stroke="#f5eef2" stroke-width="3" fill="none" stroke-linecap="round"/>
-  <circle cx="45" cy="45" r="5" fill="#f5eef2"/>
-  <circle cx="62" cy="45" r="5" fill="#f5eef2"/>
-  <path d="M38 60 Q50 68 62 60" stroke="#f5eef2" stroke-width="3" fill="none" stroke-linecap="round"/>
-</svg>
-
 <div id="app">
   <div class="topline"><span class="x">✳</span> NO HAY DUDA, ES ARCADE <span class="x">✳</span></div>
 
   <section id="screen-arcade" class="screen">
     <header class="title">
       <h1>ARCADE&nbsp;DEL&nbsp;CUMPLE</h1>
-      <p class="sub">Gana <b>un juego</b> y desbloquea tu invitación 🖤</p>
+      <p class="sub">Gana <b>un juego</b> y desbloquea tu invitación</p>
     </header>
 
     <div class="panel">
@@ -316,13 +289,13 @@
         <input type="text" id="guestName" placeholder="¿Quién eres?" maxlength="40">
       </div>
       <div class="btnrow">
-        <button class="btn" id="rsvpYes">SÍ, AHÍ ESTARÉ 🖤</button>
+        <button class="btn" id="rsvpYes">SÍ, AHÍ ESTARÉ</button>
         <button class="btn no" id="rsvpNo">no puedo 😢</button>
       </div>
     </div>
 
     <div class="panel confirm" id="rsvpConfirm" hidden>
-      <div class="big" id="confirmEmoji">🖤</div>
+      <div class="big" id="confirmEmoji">🎮</div>
       <h3 id="confirmTitle"></h3>
       <p id="confirmText"></p>
       <button class="linklike redo" id="rsvpEdit">cambiar respuesta</button>
@@ -734,7 +707,7 @@
     rsvpConfirm.hidden = false;
     var n = name && name.trim() ? name.trim() : 'oye';
     if(coming){
-      document.getElementById('confirmEmoji').textContent = '🖤🎉';
+      document.getElementById('confirmEmoji').textContent = '🎉';
       document.getElementById('confirmTitle').textContent = '¡Confirmado, ' + n + '!';
       document.getElementById('confirmText').textContent = 'Nos vemos el viernes 25 a las 9pm en Pica Pica Bar. No faltes.';
     } else {
